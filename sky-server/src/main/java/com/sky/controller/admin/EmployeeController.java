@@ -1,6 +1,7 @@
 package com.sky.controller.admin;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
@@ -102,4 +103,40 @@ public class EmployeeController {
         PageResult pageResult = employeeService.page(employeePageQueryDTO);
         return Result.success(pageResult);
     }
+
+    /**
+     * 按id查询员工
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Result<Employee> findById(@PathVariable Long id) {
+        //log.info("员工查询，id：{}", id);
+        Employee employee = employeeService.findById(id);
+        return Result.success(employee);
+    }
+
+    /**
+     * 修改员工账户状态
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")   //@PathVariable 路径参数
+    public Result setStatus(@PathVariable Integer status, Long id) {
+        employeeService.setStatus(id, status);
+        return Result.success();
+    }
+
+    /**
+     * 更新用户信息
+     * @param employeeDTO
+     * @return
+     */
+    @PutMapping
+    public Result updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        employeeService.updateEmployee(employeeDTO);
+        return Result.success();
+    }
+
 }
