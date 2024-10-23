@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: xpoh030201
+  huaweiobs:
+    endpoint: obs.cn-north-4.myhuaweicloud.com
+    access-key-id: 5XGT49SJ5RDYQJVFVFPT
+    access-key-secret: fhgdvwyT3iQWvRlv7SCGChh7y2Ea19XOnPGkligl
+    bucket-name: dzdata
